@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
         <meta charset="utf-8" />
-        <title>Faded Stars News. - Start</title>
+        <title>Faded Stars News. - tinyfuge macro</title>
         <link rel="stylesheet" href="http://news.fadedstars.xyz/theme/css/main.css" />
 
         <!--[if IE]>
@@ -28,28 +28,40 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://news.fadedstars.xyz/official-start-of-the-newspaper.html">Official Start of the Newspaper!</a></h1>
+                    <h1 class="entry-title"><a href="http://news.fadedstars.xyz/a-tinyfugue-macro.html">A TinyFugue Macro!</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2017-10-01T10:25:26.377448-05:00">
-                Published: Sun, 01 Oct 2017
+        <abbr class="published" title="2017-10-09T10:59:00-05:00">
+                Published: Mon, 09 Oct 2017
         </abbr>
 
         <address class="vcard author">
                 By                         <a class="url fn" href="http://news.fadedstars.xyz/author/dylan-copeland.html">Dylan Copeland</a>
         </address>
-<p>In <a href="http://news.fadedstars.xyz/category/septemmber-2017.html">Septemmber 2017</a>.</p>
-<p>tags: <a href="http://news.fadedstars.xyz/tag/faded-stars.html">Faded Stars</a> <a href="http://news.fadedstars.xyz/tag/newspaper.html">Newspaper</a> <a href="http://news.fadedstars.xyz/tag/start.html">Start</a> <a href="http://news.fadedstars.xyz/tag/official.html">Official</a> </p>
-</footer><!-- /.post-info --><h2>Welcome!</h2>
-<p>Hey there everyone! It's Dylan, and I'm haopy to announce that this is the first official post 
-of the news paper!</p>
-<h2>Current Status of progress with anything relating to the Faded Stars Community</h2>
-<p>So, I'm sure y'all are all curious about what's going on with Faded Stars, which who can blame 
-you? So here we go, let me get you caught up to speed!</p>
-<p>MUCK: W.I.P.</p>
-<p>Server: Plugin work, Map building both need done.</p>
-<p>Discord: Ready to go!</p>
-<h2>How to help by contributing!</h2>
-<p>If you would like to contribute to help us get things going faster, then contact me.</p>                </article>
+<p>In <a href="http://news.fadedstars.xyz/category/october-2017.html">October 2017</a>.</p>
+<p>tags: <a href="http://news.fadedstars.xyz/tag/information.html">information</a> <a href="http://news.fadedstars.xyz/tag/muck.html">muck</a> <a href="http://news.fadedstars.xyz/tag/tinyfuge-macro.html">tinyfuge macro</a> </p>
+</footer><!-- /.post-info --><p>So a while ago I made this thing for tf5 users that separates puppets out into
+their own worlds. I've been using it for a while and I thought I might as well
+share it - the code follows; to use it, stick it into your init file and type</p>
+<blockquote>
+/puppet PuppetName puppetcommand</blockquote>
+<p>This will create a world called 'PuppetName', to which the contents of all lines
+received from the world you typed the command into that begin with 'PuppetName&gt;'
+will be sent (excluding the 'PuppetName'.) The right angled bracket is there so
+that /echo will not think you are attempting to use a nonextant option if a line
+sent to the puppet begins with a dash.</p>
+<p>When you're done with your puppet world, you can make it go away by typing:</p>
+<blockquote>
+/kpuppet PuppetName</blockquote>
+<p>which redefines the defined macros to empty macros and 'disconnects' you from
+the world: your connection should then behave as before.</p>
+<p>Feel free to further modify, share, tweak, etc. (you could consider this public
+domain if you wish.)</p>
+<p>CODE BEGINS HERE * INSERT EVERYTHING BELOW THIS LINE INTO .TFRC FOR BEST RESULTS</p>
+<p>; Macro for puppet separation
+/def puppet = /let parent %; /test parent := fg_world() %; /addworld %{1} %; /def -q -agA -m2 -t&quot;%1&gt;(.+)&quot; pt_%{1} = /echo -w%1 &gt;%%P1 %; /def -w%1 -hSEND sender_%1 = /send -w%parent %2 %%* %; /connect %1</p>
+<p>; Kill a puppet
+/def kpuppet = /def sender_%1= %; /def pt_%1= %; /dc %1</p>
+                </article>
             </aside><!-- /#featured -->
         <section id="extras" class="body">
                 <div class="blogroll">
