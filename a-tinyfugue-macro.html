@@ -62,10 +62,23 @@ the world: your connection should then behave as before.</p>
 <p>Feel free to further modify, share, tweak, etc. (you could consider this public
 domain if you wish.)</p>
 <p>CODE BEGINS HERE * INSERT EVERYTHING BELOW THIS LINE INTO .TFRC FOR BEST RESULTS</p>
-<p>; Macro for puppet separation
-/def puppet = /let parent %; /test parent := fg_world() %; /addworld %{1} %; /def -q -agA -m2 -t&quot;%1&gt;(.+)&quot; pt_%{1} = /echo -w%1 &gt;%%P1 %; /def -w%1 -hSEND sender_%1 = /send -w%parent %2 %%* %; /connect %1</p>
-<p>; Kill a puppet
-/def kpuppet = /def sender_%1= %; /def pt_%1= %; /dc %1</p>
+<pre class="literal-block">
+; Macro for puppet separation
+/def puppet = \
+/let parent %; \
+/test parent := fg_world() %; \
+/addworld %{1} %; \
+/def -q -agA -m2 -t&quot;%1&gt;(.+)&quot; pt_%{1} = /echo -w%1 &gt;%%P1 %; \
+/def -w%1 -hSEND sender_%1 = /send -w%parent %2 %%* %; \
+/connect %1
+
+; Kill a puppet
+/def kpuppet = \
+/def sender_%1= %; \
+/def pt_%1= %; \
+/dc %1
+</pre>
+<p>Testing.</p>
 
     </div><!-- /.entry-content -->
 
